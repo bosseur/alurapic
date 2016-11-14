@@ -1,14 +1,13 @@
-angular.module('alurapic').controller('FotoController', function($scope, $http, $routeParams){
+angular.module('alurapic').controller('FotoController', function($scope, $http, $routeParams, recursouFoto){
 
 	$scope.foto={};
 	$scope.mensagem='';
 
 	if($routeParams.fotoId){
-		$http.get('v1/fotos/' + $routeParams.fotoId)
-		.success(function(foto){
+		recursouFoto.get({fotoId:$routeParams.fotoId}, function(foto){
 			$scope.foto = foto;
-		})
-		.error(function(error){
+		}, 
+		function(error){
 			console.log(error);
 			$scope.mensagem = "Não foi possivel obter a foto";
 		});
@@ -18,24 +17,28 @@ angular.module('alurapic').controller('FotoController', function($scope, $http, 
 		if($scope.formulario.$valid){
 
 			if($scope.foto._id){
-				$http.put('v1/fotos/' + $scope.foto._id, $scope.foto)
-				.success(function(){
+
+				recursouFoto.update({fotoId:$routeParams.fotoId},
+				function(){
 					$scope.mensagem="Alterado com sucesso";
-				})
-				.error(function(error){
+				}, 
+				function(error){
 					console.log(error);
 					$scope.mensagem="Erro ao alterar";
-				});
+				})
+
 			}else{
-				$http.post('v1/fotos', $scope.foto)
-				.success(function(){
+
+				recursouFoto.save($scope.foto,
+				function(){
 					$scope.foto = {};
 					$scope.mensagem="Cadastrado com sucesso";
-				})
-				.error(function(error){
+				}, 
+				function(error){
 					console.log(error);
 					$scope.mensagem="Erro ao cadastrar";
-				});
+				})
+
 			}
 		}
 	};

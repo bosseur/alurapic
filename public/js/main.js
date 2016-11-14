@@ -1,4 +1,4 @@
-angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute'])
+angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute', 'meusServicos'])
 .config(function($routeProvider, $locationProvider){
 
 	//somente funciona se servidor for preparado
