@@ -24,11 +24,11 @@ angular.module('alurapic').controller('FotosController', function($scope, $http)
 		.success(function(){
 			var indexFoto = $scope.fotos.indexOf(foto);
 			$scope.fotos.splice( indexFoto, 1 );
-			$scope.mensagem='Foto' + foto.titulo + ' Removido com sucesso';
+			$scope.mensagem='Foto ' + foto.titulo + ' Removido com sucesso';
 		})
 		.error(function(error){
 			console.log(error);
-			$scope.mensagem='Foto' + foto.titulo + ' não foi removido';
+			$scope.mensagem='Foto ' + foto.titulo + ' não foi removido';
 		});
 
 	}

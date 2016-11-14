@@ -10,7 +10,7 @@ angular.module('alurapic').controller('FotoController', function($scope, $http, 
 		})
 		.error(function(error){
 			console.log(error);
-			$scope.mensagem = "Nãao foi possivel obter a foto";
+			$scope.mensagem = "Não foi possivel obter a foto";
 		});
 	}
 
