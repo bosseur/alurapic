@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('FotoController', function($scope, $http, $routeParams, recursouFoto){
+angular.module('alurapic').controller('FotoController', function($scope, $routeParams, recursouFoto){
 
 	$scope.foto={};
 	$scope.mensagem='';
@@ -18,7 +18,8 @@ angular.module('alurapic').controller('FotoController', function($scope, $http, 
 
 			if($scope.foto._id){
 
-				recursouFoto.update({fotoId:$routeParams.fotoId},
+				recursouFoto.update({fotoId:$scope.foto._id},
+				$scope.foto,
 				function(){
 					$scope.mensagem="Alterado com sucesso";
 				}, 
