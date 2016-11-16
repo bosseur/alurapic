@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('FotoController', function($scope, $routeParams,recursouFoto,cadastroDeFotos){
+angular.module('alurapic').controller('FotoController', ['$scope', '$routeParams', 'recursouFoto', 'cadastroDeFotos', function($scope, $routeParams,recursouFoto,cadastroDeFotos){
 
 	$scope.foto={};
 	$scope.mensagem='';
@@ -22,10 +22,12 @@ angular.module('alurapic').controller('FotoController', function($scope, $routeP
 			.then(function(dados){
 				$scope.mensagem = dados.mensagem;
 				if(dados.inclusao)$scope.foto={};
+				//$scope.focus=true;
+
 			})
 			.catch(function(error){
 				$scope.mensagem = dados.mensagem;
 			})
 		}
 	};
-});
+}]);
